@@ -57,7 +57,7 @@ if filter_3:
 
 st.markdown('### Radiobutton')
 
-filter_4 = st.radio('Выбор значения', ['Age', 'Family size', 'Marital Status'])
+filter_4 = st.radio('Выбор значения', ['Age', 'Family size', 'Marital Status', 'latitude'])
 df_filter_4 = df[[filter_4]]
 if not df_filter_4.empty:
     st.line_chart(df_filter_4)
@@ -88,6 +88,7 @@ if filter_1:
     st.write(f'Количество клиентов старше {age}: {len(df_filtered)}')
 
 if bottom:
-    st.write(f'Количество клиентов от {bottom} до {top}')
-    # st.bar_chart(df[df['Age'] > bottom]) # Как красиво отобразить
+    df_range = df[(df['Age'] >= bottom) & (df['Age'] <= top)]
+    st.write(f'Количество клиентов от {bottom} до {top}: {len(df_range)}')
+    st.bar_chart(df_range['Age'].value_counts())
 

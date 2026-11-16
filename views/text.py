@@ -39,4 +39,5 @@ st.markdown("""
 """  
 )
 
-st.markdown("<span style='color:red'>Красный текст</span>", unsafe_allow_html=True)
+st.markdown("<span style='color:blue'>Красный текст</span>", unsafe_allow_html=True)
+st.write('Это моя строчка!')

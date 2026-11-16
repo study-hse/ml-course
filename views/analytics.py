@@ -14,7 +14,7 @@ st.set_page_config(
 # словарь
 custom_dict = {
     'course' : [1,2,3,4,],
-    'marks' : [8, 9, 10, 6, ]
+    'marks' : [5, 9, 10, 6, ]
 }
 st.write(custom_dict)
 # Датафрейм
@@ -31,12 +31,12 @@ st.write(df)
 
 st.subheader('Linechart')
 st.line_chart(
-    df['Age'].head(50),
+    df['Age'].head(10),
     x_label='Индекс',
     y_label='Возраст'
 )
 
-st.subheader('Barchart')
+st.subheader('bar_chart')
 
 ages = df['Age'].value_counts()
 
@@ -44,7 +44,7 @@ st.bar_chart(
     ages,
     x_label='Возраст',
     y_label='Количество',
-    color='#F39C12'
+    color='#2ECC71'
 )
 
 col1, col2, col3 = st.columns(3)
@@ -53,15 +53,15 @@ with col1:
     st.metric('Средний возраст клиентов', round(df['Age'].mean(), 1))
 with col2:
     st.metric('Минимальный возраст клиента', round(df['Age'].min(), 1))
-with col2:
+with col3:
     st.metric('Максимальный возраст клиента', round(df['Age'].max(), 1))
 
 st.header('Scatter chart')
 st.scatter_chart(df,
                  x='Age',
-                 y='Family size',
+                 y='latitude',
                  x_label='Возраст',
-                 y_label='Размер семьи'
+                 y_label='Широта'
                  )
 
 st.header('Map')
